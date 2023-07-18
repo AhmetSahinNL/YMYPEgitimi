@@ -17,4 +17,4 @@ string nameLastName = "Taner Saydam";
 name = "asdasd";
 
 char karakter = 'A';
-string açıklama = "asdaskdjabskdabskdabjskdjaksdjbaskdjbaksdjbakjsdbkasdbkasdbkajsbdasajsdkbakdsbaksdjbaksdjbaksdbasd"
+string açıklama = "asdaskdjabskdabskdabjskdjaksdjbkad";
