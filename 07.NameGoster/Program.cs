@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Size hitap edebilmem için lütfen adınızı belirtiniz.");
             string name = Console.ReadLine();
             Console.WriteLine("Hoşgeldin " + name + " (-_-)");    
         }
