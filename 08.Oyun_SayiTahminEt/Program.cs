@@ -1,4 +1,5 @@
-﻿Console.WriteLine("Lütfen isminizi girin:");
+﻿//for, foreach, while => break bu döngüyü kırıp çıkmamızı sağlar.
+Console.WriteLine("Lütfen isminizi girin:");
 string name = Console.ReadLine();
 Console.WriteLine("Sayi tahmini oyununa hoşgeldiniz " + name);
 Random rastgele = new();
@@ -7,7 +8,7 @@ int sayi = rastgele.Next(1, 10);
 int tahmin = 0;
 int deneme = 1;
 
-//for, foreach, while => break bu döngüyü kırıp çıkmanızı sağlar.
+
 while (sayi != tahmin)
 {
     Console.WriteLine("Lütfen 1-10 arasında bir rakam yazın:");
@@ -29,7 +30,7 @@ while (sayi != tahmin)
 
     if (sayi == tahmin)
     {
-        //Console.WriteLine("Tebrikler! Tuttuğum sayıyı " + deneme + " denemede buldunuz!");
+        //Console.WriteLine("Tebrikler! Tuttuğum sayıyı " + deneme + " denemede buldunuz!");  -- Alternatif olarak bu şekilde de yazabiliriz.
         Console.WriteLine($"Tebrikler! tuttuğum sayıyı {deneme}. denemede buldunuz!");
         break;
     }
