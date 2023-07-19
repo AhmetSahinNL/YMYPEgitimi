@@ -31,7 +31,7 @@ while (sayi != tahmin)
     {
         //Console.WriteLine("Tebrikler! Tuttuğum sayıyı " + deneme + " denemede buldunuz!");
         Console.WriteLine($"Tebrikler! tuttuğum sayıyı {deneme}. denemede buldunuz!");
-        continue;
+        break;
     }
 
     Console.WriteLine("Tuttuğum sayıyı bilemediniz!!!");
