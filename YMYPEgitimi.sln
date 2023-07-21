@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.NameGoster", "07.NameGos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.Oyun_SayiTahminEt", "08.Oyun_SayiTahminEt\08.Oyun_SayiTahminEt.csproj", "{A732D309-2082-49CD-A24B-226D52CB5F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.OgrenciYoklamaProjesi", "09.OgrenciYoklamaProjesi\09.OgrenciYoklamaProjesi.csproj", "{22B79D03-C71C-42C1-ABFE-CB8B9883F18A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.HataYonetimi", "09.HataYonetimi\09.HataYonetimi.csproj", "{996E2E8A-B95E-4FBD-AFC8-5E794C2E5BD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{A732D309-2082-49CD-A24B-226D52CB5F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A732D309-2082-49CD-A24B-226D52CB5F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A732D309-2082-49CD-A24B-226D52CB5F01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22B79D03-C71C-42C1-ABFE-CB8B9883F18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22B79D03-C71C-42C1-ABFE-CB8B9883F18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22B79D03-C71C-42C1-ABFE-CB8B9883F18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22B79D03-C71C-42C1-ABFE-CB8B9883F18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996E2E8A-B95E-4FBD-AFC8-5E794C2E5BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996E2E8A-B95E-4FBD-AFC8-5E794C2E5BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996E2E8A-B95E-4FBD-AFC8-5E794C2E5BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996E2E8A-B95E-4FBD-AFC8-5E794C2E5BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
