@@ -5,7 +5,13 @@ namespace _11.ArabalarConsoleApp
 {
     internal class Program
     {
-        private static List<Car> cars = new List<Car>();
+        private static List<Car> cars = new List<Car>
+        {
+            new Car { Marka = "BMW", Model = 2020, MotorGucu = 5000 }
+            new Car { Marka = "Ferrari", Model = 2022, MotorGucu = 8000 }
+            new Car { Marka = "Lamborghini", Model = 2021, MotorGucu = 6500 }
+            new Car { Marka = "Porsche", Model = 2023, MotorGucu = 6800 }
+        };
 
         private static void Main(string[] args)
         {
@@ -81,8 +87,8 @@ namespace _11.ArabalarConsoleApp
             int model = GetValidNumber("Modeli yazın: ");
             int motorGucu = GetValidNumber("Motor gücünü yazın: ");
 
-            cars.Add(new Car() { Marka = marka, Model = model, MotorGucu = motorGucu });
-            Console.WriteLine("Arabanız başarıyla eklenmiştir!");
+            cars.Add(new Car { Marka = marka, Model = model, MotorGucu = motorGucu });
+            Console.WriteLine("Araba başarıyla eklendi!");
         }
 
         private static int GetValidNumber(string message)
@@ -102,33 +108,7 @@ namespace _11.ArabalarConsoleApp
 
         private static void RentCar()
         {
-            Console.WriteLine("Kiralamak istediğiniz aracın numarasını seçin:");
-
-            for (int i = 0; i < cars.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {cars[i].Marka}");
-            }
-
-            int selectedCarIndex = GetValidNumber("Araç numarası: ") - 1;
-
-            if (selectedCarIndex >= 0 && selectedCarIndex < cars.Count)
-            {
-                Console.WriteLine("Kiralama tarihi: ");
-                string kiralamaTarihi = Console.ReadLine();
-                Console.WriteLine("Kiralama saati: ");
-                string kiralamaSaati = Console.ReadLine();
-                Console.WriteLine("Teslim tarihi: ");
-                string teslimTarihi = Console.ReadLine();
-
-                Console.WriteLine($"{cars[selectedCarIndex].Marka} marka aracını {kiralamaTarihi} {kiralamaSaati} tarihinde kiralamak üzere işlem yaptınız. Teslim tarihiniz:");
-                Console.WriteLine($"Teslim tarihiniz: {teslimTarihi} {kiralamaSaati}.");
-                Console.WriteLine("Aracı zamanında teslim etmezseniz cezai işlem uygulanacaktır.");
-                Console.WriteLine("Bizi tercih ettiğiniz için teşekkürler (-_-)");
-            }
-            else
-            {
-                Console.WriteLine("Geçersiz bir araç numarası seçtiniz.");
-            }
+            // Kiralama işlemleri burada yer alacak
         }
 
         private static void Exit()
@@ -136,12 +116,12 @@ namespace _11.ArabalarConsoleApp
             Console.WriteLine("Ziyaretiniz için teşekkürler. Tekrar görüşmek üzere.");
             Environment.Exit(0);
         }
-    }
 
-    public class Car
-    {
-        public string Marka;
-        public int Model;
-        public int MotorGucu;
+        public class Car
+        {
+            public string Marka;
+            public int Model;
+            public int MotorGucu;
+        }
     }
 }
