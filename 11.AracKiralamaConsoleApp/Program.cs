@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ArabalarDenemesi
+namespace _11.ArabalarConsoleApp
 {
     internal class Program
     {
