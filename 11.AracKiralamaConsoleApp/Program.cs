@@ -1,137 +1,147 @@
-﻿namespace _11.ArabalarConsoleApp;
+using System;
+using System.Collections.Generic;
 
-internal class Program
+namespace ArabalarDenemesi
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        List<Car> cars = new();
-        cars.Add(new Car() { Marka = "BMW", Model = 2023, MotorGucu = 5000 });
-        cars.Add(new Car() { Marka = "Reno", Model = 2020, MotorGucu = 6000 });
+        private static List<Car> cars = new List<Car>();
 
-        Console.WriteLine("Araba Yapay Zekasın Hoşgeldiniz!");
-        Console.WriteLine("Size nasıl yardımcı olabilirim?");
-        Console.WriteLine("İşlem Listesi:");
-        Console.WriteLine("1- Araç Listesi");
-        Console.WriteLine("2- Araç Sayısı");
-        Console.WriteLine("3- Araç Ekle");
-        Console.WriteLine("4- Listeyi Göster");
-        Console.WriteLine("5- Araç Kirala");
-        Console.WriteLine("6- Çıkış");
-
-        while (true)
+        private static void Main(string[] args)
         {
-            string cevap = Console.ReadLine();
+            Console.WriteLine("Araba Yapay Zekasına Hoş Geldiniz!");
+            Console.WriteLine("Size nasıl yardımcı olabilirim?");
+            ShowMenu();
+            ProcessUserInput();
+        }
 
+        private static void ShowMenu()
+        {
+            Console.WriteLine("İşlem Listesi");
+            Console.WriteLine("1- Araç Listesi");
+            Console.WriteLine("2- Araç Sayısı");
+            Console.WriteLine("3- Araç Ekle");
+            Console.WriteLine("4- Listeyi Göster");
+            Console.WriteLine("5- Araç Kirala");
+            Console.WriteLine("6- Çıkış");
+        }
 
-            if (cevap.ToLower() == "Araç Listesi".ToLower())
+        private static void ProcessUserInput()
+        {
+            while (true)
             {
-                foreach (Car car in cars)
+                string cevap = Console.ReadLine();
+
+                switch (cevap.ToLower())
                 {
-                    Console.WriteLine($". Marka: {car.Marka} - Model: {car.Model} - Motor Gücü: {car.MotorGucu}");
+                    case "1":
+                        ListCars();
+                        break;
+                    case "2":
+                        DisplayCarCount();
+                        break;
+                    case "3":
+                        AddCar();
+                        break;
+                    case "4":
+                        ShowMenu();
+                        break;
+                    case "5":
+                        RentCar();
+                        break;
+                    case "6":
+                        Exit();
+                        break;
+                    default:
+                        Console.WriteLine("Geçersiz bir seçim yaptınız. Lütfen tekrar deneyin.");
+                        break;
                 }
             }
-            else if (cevap.ToLower() == "Araç Sayısı".ToLower())
-                Console.WriteLine($"Toplam araç sayısı: {cars.Count()}");
-            else if (cevap.ToLower() == "Araç Ekle".ToLower())
+        }
+
+        private static void ListCars()
+        {
+            Console.WriteLine("Araç Listesi:");
+            foreach (Car car in cars)
             {
-                Console.WriteLine("Markayı yazın:");
-                string marka = Console.ReadLine();
-
-            tekrar1:;
-
-                Console.WriteLine("Modeli yazın:");
-                string modelString = Console.ReadLine();
-                int model = 0;
-                if (!int.TryParse(modelString, out model))
-                {
-                    Console.WriteLine("Model bir sayı olmalıdır!");
-                    goto tekrar1;
-                }
-
-            tekrar2:;
-                Console.WriteLine("Motor gücünü yazın:");
-                string motorGucuString = Console.ReadLine();
-                int motorGucu = 0;
-                if (int.TryParse(motorGucuString, out motorGucu) == false)
-                {
-                    Console.WriteLine("Motor gücü bir sayı olmalıdır!");
-                    goto tekrar2;
-                }
-
-                Car car = new();
-                car.Marka = marka;
-                car.Model = model;
-                car.MotorGucu = motorGucu;
-
-                cars.Add(car);
-                Console.WriteLine("Arabanız başarıyla eklenmiştir!");
-
+                Console.WriteLine($"Marka: {car.Marka} - Model: {car.Model} - Motor Gücü: {car.MotorGucu}");
             }
-            else if (cevap.ToLower() == "Çıkış".ToLower())
+        }
+
+        private static void DisplayCarCount()
+        {
+            Console.WriteLine($"Toplam araç sayısı: {cars.Count}");
+        }
+
+        private static void AddCar()
+        {
+            Console.Write("Markayı yazın: ");
+            string marka = Console.ReadLine();
+
+            int model = GetValidNumber("Modeli yazın: ");
+            int motorGucu = GetValidNumber("Motor gücünü yazın: ");
+
+            cars.Add(new Car() { Marka = marka, Model = model, MotorGucu = motorGucu });
+            Console.WriteLine("Arabanız başarıyla eklenmiştir!");
+        }
+
+        private static int GetValidNumber(string message)
+        {
+            int number;
+            while (true)
             {
-                Console.WriteLine("Ziyaretiniz için teşekkürler. Tekrar görüşmek üzere.");
-                break;
+                Console.Write(message);
+                if (int.TryParse(Console.ReadLine(), out number))
+                {
+                    break;
+                }
+                Console.WriteLine("Lütfen geçerli bir sayı girin.");
             }
-            else if (cevap.ToLower() == "Listeyi Göster".ToLower())
+            return number;
+        }
+
+        private static void RentCar()
+        {
+            Console.WriteLine("Kiralamak istediğiniz aracın numarasını seçin:");
+
+            for (int i = 0; i < cars.Count; i++)
             {
-                Console.WriteLine("İşlem Listesi:");
-                Console.WriteLine("1- Araç Listesi");
-                Console.WriteLine("2- Araç Sayısı");
-                Console.WriteLine("3- Araç Ekle");
-                Console.WriteLine("4- Listeyi Göster");
-                Console.WriteLine("5- Çıkış");
+                Console.WriteLine($"{i + 1}. {cars[i].Marka}");
             }
-            else if (cevap.ToLower() == "Araç Kirala".ToLower())
+
+            int selectedCarIndex = GetValidNumber("Araç numarası: ") - 1;
+
+            if (selectedCarIndex >= 0 && selectedCarIndex < cars.Count)
             {
-                for (int x = 0; x < cars.Count(); x++)
-                {
-                    Console.WriteLine($"{x + 1}. {cars[x].Marka}");
-                }
-
-            tekrar3:;
-                Console.WriteLine("Araç seçimi yapın?");
-                Console.WriteLine("Araç numarası:");
-                string secilenAracString = Console.ReadLine();
-                int secilenArac = 0;
-                if (int.TryParse(secilenAracString, out secilenArac) == false)
-                {
-                    Console.WriteLine("Sadece sayı ile araç seçebilirsiniz!");
-                    goto tekrar3;
-                }
-
-                if (secilenArac > cars.Count())
-                {
-                    Console.WriteLine("Seçtiğiniz araç filoda bulunmuyor!");
-                    goto tekrar3;
-                }
-
-                Console.WriteLine("Kiralama tarihi:");
+                Console.WriteLine("Kiralama tarihi: ");
                 string kiralamaTarihi = Console.ReadLine();
-
-                Console.WriteLine("Kiralama saati:");
+                Console.WriteLine("Kiralama saati: ");
                 string kiralamaSaati = Console.ReadLine();
-
-                Console.WriteLine("Teslim tarihi");
+                Console.WriteLine("Teslim tarihi: ");
                 string teslimTarihi = Console.ReadLine();
 
-                Console.WriteLine($"{cars[secilenArac - 1].Marka} marka aracını {kiralamaTarihi} {kiralamaSaati} tarihinde kiralamak üzere işlem yaptınız.");
+                Console.WriteLine($"{cars[selectedCarIndex].Marka} marka aracını {kiralamaTarihi} {kiralamaSaati} tarihinde kiralamak üzere işlem yaptınız. Teslim tarihiniz:");
                 Console.WriteLine($"Teslim tarihiniz: {teslimTarihi} {kiralamaSaati}.");
                 Console.WriteLine("Aracı zamanında teslim etmezseniz cezai işlem uygulanacaktır.");
                 Console.WriteLine("Bizi tercih ettiğiniz için teşekkürler (-_-)");
             }
             else
             {
-                Console.WriteLine("Ben henüz olgunlaşmamış bir yapay zekayım. \nSadece listedeki işlemleri yapabilirim!");
+                Console.WriteLine("Geçersiz bir araç numarası seçtiniz.");
             }
+        }
 
-            Console.WriteLine("Başka ne işlem yapmak istersiniz?");
-        } ///ctrl +k + d yaparsan kodları düzgün sırasına yerleştirir
+        private static void Exit()
+        {
+            Console.WriteLine("Ziyaretiniz için teşekkürler. Tekrar görüşmek üzere.");
+            Environment.Exit(0);
+        }
     }
-}
 
-public class Car
-{
-    public string Marka;
-    public int Model;
-    public int MotorGucu;
+    public class Car
+    {
+        public string Marka;
+        public int Model;
+        public int MotorGucu;
+    }
 }
