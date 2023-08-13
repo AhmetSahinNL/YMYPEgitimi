@@ -29,9 +29,8 @@ namespace _11.ArabalarConsoleApp
             Console.WriteLine("1- Araç Sayısı");
             Console.WriteLine("2- Araç Listesi");
             Console.WriteLine("3- Araç Ekle");
-            Console.WriteLine("4- Listeyi Göster");
-            Console.WriteLine("5- Araç Kirala");
-            Console.WriteLine("6- Çıkış");
+            Console.WriteLine("4- Araç Kirala");
+            Console.WriteLine("5- Çıkış");
             Console.WriteLine("");
         }
 
@@ -63,20 +62,15 @@ namespace _11.ArabalarConsoleApp
                         AddCar();
                         Console.WriteLine("");
                         break;
-                    case "4":
-                        Console.WriteLine("");
-                        ShowMenu();
-                        Console.WriteLine("");
-                        break;
                         Console.WriteLine("İşlem No:");
-                    case "5":
+                    case "4":
                         Console.WriteLine("");
                         Console.WriteLine("***********************  Araç Kirala  ***********************");
                         Console.WriteLine("");
                         RentCar();
                         Console.WriteLine("");
                         break;
-                    case "6":
+                    case "5":
                         Console.WriteLine("");
                         Exit();
                         Console.WriteLine("");
